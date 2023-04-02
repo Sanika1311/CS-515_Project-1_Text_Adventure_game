@@ -2,10 +2,11 @@ import sys
 import json
 
 class Room:
-    def __init__(self, name, desc, exits):
+    def __init__(self, name, desc, exits, items):
         self.name = name
         self.desc = desc
         self.exits = exits
+        self.items = items
     
     def __str__(self) -> str:
         return f"{self.name}\n{self.desc}\n{self.exits}\n"
@@ -28,17 +29,21 @@ class Map:
                     name = room_data.get("name")
                     desc = room_data.get("desc")
                     exits = room_data.get("exits")
+                    if(room_data.get("items")):
+                        items = room_data.get("items")
+                    else:
+                        items = []
                     if name is None or desc is None or exits is None:
                         raise ValueError("Invalid room data")
                     for direction, room_id in exits.items():
                         if not isinstance(room_id, int):
                             raise ValueError("Invalid exit data")
-                    self.rooms[self.count] = Room(name, desc, exits)
+                    self.rooms[self.count] = Room(name, desc, exits, items)
                     self.count += 1
-                Game(self.rooms)
-                return self.rooms
+                
             except:
                 raise ValueError("Invalid map file")
+            Game(self.rooms)
     
     def __str__(self):
         return f"Map: {self.rooms}"
@@ -56,20 +61,57 @@ class Game:
     def start(self):
         room = self.rooms[self.player_location]
         print(f"> {room.name}\n\n{room.desc}\n")
+        if(len(room.items) != 0):
+            print(f"Items: {' '.join(room.items)}\n")
         print(f"Exits: {' '.join(room.exits.keys())}")
         print()
         self.prompt()
     
     def prompt(self):
-        while True:
-            action = input("What would you like to do? ")
-            verb = action.lower().split(" ")
-            
-            if verb[0] == "go":
-                if len(verb) == 2 :
-                    self.go(verb[1])
+
+        game_play = True
+        while game_play:
+            try:
+                action = input("What would you like to do? ")
+                verb = action.lower().split(" ")
+                
+                if verb[0] == "go":
+                    if len(verb) == 2 :
+                        self.go(verb[1])
+                    else:
+                        print("Sorry, you need to 'go' somewhere.")
+
+                elif verb[0] == "look":
+                    if len(verb) == 1 :
+                        self.look()
+                    else :
+                        print(f"Invalid Verb")
+
+                elif verb[0] == "get":
+                        if len(verb) == 2 :
+                            self.get(verb[1])
+                        else:
+                            print("Sorry, you need to 'get' something.")
+                    
+                elif verb[0] == "inventory":
+                    if len(verb) == 1 :
+                        if(len(self.inventory) == 0):
+                            print(f"You're not carrying anything.")
+                        else:
+                            print(f"Inventory:\n{' '.join(self.inventory)}")
+                    else:
+                        print("Invalid Verb")
+
+                elif verb[0] == "quit":
+                    game_play = False
+                    print("Goodbye!")
+
                 else:
-                    print("Sorry, you need to 'go' somewhere.")
+                    print("Invalid verb")
+
+            except EOFError:
+                print("\nUse 'quit' to exit.")
+
     
 
     def go(self, direction):
@@ -82,19 +124,36 @@ class Game:
             self.player_location = room.exits[direction]
             self.start()
 
+    def look(self):
+        room = self.rooms[self.player_location]
+        print(f"> {room.name}\n\n{room.desc}\n")
+        if(len(room.items) != 0):
+            print(f"Items: {' '.join(room.items)}\n")
+        
+        print(f"Exits: {' '.join(room.exits.keys())}")
+        print()
+    
+    def get(self, noun):
+        room = self.rooms[self.player_location]
+        if noun not in room.items:
+            print(f"There's no {noun} anywhere.")
+        else:
+            self.inventory.append(noun)
+            print(f"You pick up the {noun}.")
+            room.items.remove(noun)
+
 
     
 
-    
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
           map_file = sys.argv[1]
-          game = Map(map_file)
-          print(game)
+          Map(map_file)
+        #   print(game)
     else:
         map_file = "loop.map"
-        game = Map(map_file)
-        print(game)
+        Map(map_file)
+        # print(game)
        
