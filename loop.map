@@ -20,5 +20,17 @@
   "desc": "This room is fancy. It's red!",
   "exits": { "north": 2, "west": 0 },
   "items": ["rose"]
+ },
+ {"name": "A yellow room", "desc": "You are in a simple room with yellow walls.",
+  "exits": { "north": 1, "northwest": 2 }
+ }
+,
+ {"name": "A purple room", "desc": "This room is simple, too, but with purple walls.",
+  "exits": { "west": 2, "south": 0 }
+ }
+,
+ {"name": "A pink room", "desc": "You are in a simple room, with bright pink walls.",
+  "exits": { "east": 1, "southeast": 0 },
+  "items": ["banana", "bandana", "bellows", "deck of cards"]
  }
 ]

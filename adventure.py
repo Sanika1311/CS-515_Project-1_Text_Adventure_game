@@ -68,33 +68,43 @@ class Game:
         self.prompt()
     
     def prompt(self):
-
+        valid_commands = ["go", "look", "get", "inventory", "quit", "drop"]
         game_play = True
         while game_play:
             try:
                 action = input("What would you like to do? ")
-                verb = action.lower().split(" ")
+                half_verb = action.lower().split(" ")
+                matches = [cmd for cmd in valid_commands if cmd.startswith(half_verb[0])]
+                if len(matches) == 1:
+                    verb = matches
+        
                 
                 if verb[0] == "go":
-                    if len(verb) == 2 :
-                        self.go(verb[1])
+                    if len(half_verb) == 2 :
+                        self.go(half_verb[1])
                     else:
                         print("Sorry, you need to 'go' somewhere.")
 
                 elif verb[0] == "look":
-                    if len(verb) == 1 :
+                    if len(half_verb) == 1 :
                         self.look()
                     else :
                         print(f"Invalid Verb")
 
                 elif verb[0] == "get":
-                        if len(verb) == 2 :
-                            self.get(verb[1])
+                        if len(half_verb) == 2 :
+                            self.get(half_verb[1])
                         else:
                             print(f"Sorry, you need to 'get' something.")
+
+                elif verb[0] == "drop":
+                        if len(half_verb) == 2 :
+                            self.drop(half_verb[1])
+                        else:
+                            print(f"Sorry, you need to drop something.")
                     
                 elif verb[0] == "inventory":
-                    if len(verb) == 1 :
+                    if len(half_verb) == 1 :
                         if(len(self.inventory) == 0):
                             print(f"You're not carrying anything.")
                         else:
@@ -140,6 +150,15 @@ class Game:
             self.inventory.append(noun)
             print(f"You pick up the {noun}.")
             room.items.remove(noun)
+    
+    def drop(self, noun):
+        room = self.rooms[self.player_location]
+        if noun not in self.inventory:
+            print(f"There is no {noun} in the inventory.") 
+        else:
+            self.inventory.remove(noun)
+            print(f"You drop the {noun}")
+            room.items.append(noun)
 
 
 if __name__ == "__main__":
