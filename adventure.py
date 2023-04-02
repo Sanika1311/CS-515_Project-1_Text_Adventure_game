@@ -113,7 +113,6 @@ class Game:
                 print("\nUse 'quit' to exit.")
 
     
-
     def go(self, direction):
         room = self.rooms[self.player_location]
         
@@ -143,17 +142,13 @@ class Game:
             room.items.remove(noun)
 
 
-    
-
-
-
 if __name__ == "__main__":
     if len(sys.argv) == 2:
           map_file = sys.argv[1]
           Map(map_file)
-        #   print(game)
+       
     else:
         map_file = "loop.map"
         Map(map_file)
-        # print(game)
-       
+        
+        
