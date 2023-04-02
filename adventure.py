@@ -62,7 +62,7 @@ class Game:
         room = self.rooms[self.player_location]
         print(f"> {room.name}\n\n{room.desc}\n")
         if(len(room.items) != 0):
-            print(f"Items: {' '.join(room.items)}\n")
+            print(f"Items: {', '.join(room.items)}\n")
         print(f"Exits: {' '.join(room.exits.keys())}")
         print()
         self.prompt()
@@ -91,26 +91,27 @@ class Game:
                         if len(verb) == 2 :
                             self.get(verb[1])
                         else:
-                            print("Sorry, you need to 'get' something.")
+                            print(f"Sorry, you need to 'get' something.")
                     
                 elif verb[0] == "inventory":
                     if len(verb) == 1 :
                         if(len(self.inventory) == 0):
                             print(f"You're not carrying anything.")
                         else:
-                            print(f"Inventory:\n{' '.join(self.inventory)}")
+                            print(f"Inventory:\n{', '.join(self.inventory)}")
                     else:
                         print("Invalid Verb")
 
                 elif verb[0] == "quit":
                     game_play = False
-                    print("Goodbye!")
+                    print(f"Goodbye!")
+                    break
 
                 else:
-                    print("Invalid verb")
+                    print(f"Invalid verb")
 
             except EOFError:
-                print("\nUse 'quit' to exit.")
+                print(f"\nUse 'quit' to exit.")
 
     
     def go(self, direction):
@@ -121,14 +122,13 @@ class Game:
         else:
             print(f"You go {direction}.\n")
             self.player_location = room.exits[direction]
-            self.start()
+            self.look()
 
     def look(self):
         room = self.rooms[self.player_location]
         print(f"> {room.name}\n\n{room.desc}\n")
         if(len(room.items) != 0):
-            print(f"Items: {' '.join(room.items)}\n")
-        
+            print(f"Items: {', '.join(room.items)}\n")
         print(f"Exits: {' '.join(room.exits.keys())}")
         print()
     
@@ -148,7 +148,7 @@ if __name__ == "__main__":
           Map(map_file)
        
     else:
-        map_file = "loop.map"
-        Map(map_file)
+         map_file = "loop.map"
+         Map(map_file)
         
         
