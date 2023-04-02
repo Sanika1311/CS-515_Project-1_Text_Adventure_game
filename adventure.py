@@ -51,6 +51,16 @@ class Game:
         self.rooms = rooms
         self.player_location = 0
         self.inventory = []
+        self.start()
+
+    def start(self):
+        room = self.rooms[self.player_location]
+        print(f"> {room.name}\n\n{room.desc}\n")
+        print(f"Exits: {' '.join(room.exits.keys())}")
+        print()
+        self.prompt()
+
+    
 
     
 
