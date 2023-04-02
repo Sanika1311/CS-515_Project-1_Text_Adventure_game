@@ -59,6 +59,29 @@ class Game:
         print(f"Exits: {' '.join(room.exits.keys())}")
         print()
         self.prompt()
+    
+    def prompt(self):
+        while True:
+            action = input("What would you like to do? ")
+            verb = action.lower().split(" ")
+            
+            if verb[0] == "go":
+                if len(verb) == 2 :
+                    self.go(verb[1])
+                else:
+                    print("Sorry, you need to 'go' somewhere.")
+    
+
+    def go(self, direction):
+        room = self.rooms[self.player_location]
+        
+        if direction not in room.exits:
+            print(f"There's no way to go {direction}.")
+        else:
+            print(f"You go {direction}.\n")
+            self.player_location = room.exits[direction]
+            self.start()
+
 
     
 
