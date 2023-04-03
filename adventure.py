@@ -79,8 +79,13 @@ class Game:
                 if len(matches) == 1:
                     verb = matches
                 elif len(matches) == 0:
-                    print(f"Invalid Verb")
-                    continue
+                    dir_match = [dir for dir in valid_directions if dir.startswith(half_verb[0])]
+                    if len(dir_match) >= 1:
+                        verb = ["go"]
+                        half_verb = ["go", half_verb[0]]
+                    else:
+                        print("Invalid verb")
+                        continue
         
                 if verb[0] == "go":
                     if len(half_verb) == 2 :
@@ -133,8 +138,8 @@ class Game:
         direction = [cmd for cmd in room.exits.keys() if cmd.startswith(direction)]
 
         if len(direction) == 1:
-            print(f"You go {direction}.\n")
-            self.player_location = room.exits[direction]
+            print(f"You go {direction[0]}.\n")
+            self.player_location = room.exits[direction[0]]
             self.look()
         elif len(direction) > 1:
             print(f"Did you want to go {' or '.join(direction)}?")
