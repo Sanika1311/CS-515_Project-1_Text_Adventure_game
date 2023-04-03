@@ -133,9 +133,9 @@ class Game:
                 print(f"\nUse 'quit' to exit.")
 
     
-    def go(self, direction):
+    def go(self, direction1):
         room = self.rooms[self.player_location]
-        direction = [cmd for cmd in room.exits.keys() if cmd.startswith(direction)]
+        direction = [cmd for cmd in room.exits.keys() if cmd.startswith(direction1)]
 
         if len(direction) == 1:
             print(f"You go {direction[0]}.\n")
@@ -144,7 +144,7 @@ class Game:
         elif len(direction) > 1:
             print(f"Did you want to go {' or '.join(direction)}?")
         else:
-            print(f"There's no way to go {direction}.")
+            print(f"There's no way to go {direction1}.")
        
 
     def look(self):
