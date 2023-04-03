@@ -1,8 +1,7 @@
 [
  {"name": "Daisy room", 
   "desc": "The room is filled with white daisies.",
-  "exits": { "south": 4, "east": 1, "southeast" : 5},
-  "items": ["cater","caterpillar","catering"]
+  "exits": { "south": 4, "east": 1 }
  }
 ,
  {"name": "Rose room", 
@@ -13,7 +12,7 @@
 ,
  {"name": "Tulip room", 
   "desc": "tTulip flowers are usually cup-shaped with three petals and three sepals.",
-  "exits": {"south": 6, "southeast" : 7, "southwest" : 5},
+  "exits": {"south": 6, "southast" : 7, "northwest" : 5},
   "items": []
  }
 ,
@@ -23,18 +22,18 @@
   "items": ["soil"]
  },
  {"name": "Carnation room", 
- "desc": "White carnations suggest good luck and light red symbolizes admiration.",
+ "desc": "White carnations suggest good luck and light red symbolizes admiration, .",
   "exits": { "north": 0, "east": 5, "south": 9 }
  }
 ,
  {"name": "Hyacinth room", 
- "desc": "This room is simple, filled with perennial hyacinth flowers.",
+ "desc": "This room is simple, filled with pernnial hyacinth flowers.",
   "exits": { "west": 4, "north": 1, "east" : 6}
  }
 ,
  {"name": "Daffodil room", 
  "desc": "The daffodil flower is showy yellow or white, with six petals and a trumpet-shape central corona.",
- "exits": { "north": 2, "southeast": 11, "southwest": 10},
+ "exits": { "west": 5, "southeast": 11, "southwest": 10},
  "items": ["banana", "bandana", "bellows", "deck of cards"]
  }
  ,
@@ -72,7 +71,7 @@
   "items": ["cats", "rats"]
  }
  ,
- {"name": "Camellia room", 
+ {"name": "Camelia room", 
   "desc": "Camellia colors include pink, white, dark pink and red.",
   "exits": { "northwest": 9, "east": 14 },
   "items": []
@@ -94,4 +93,3 @@
   "desc": "Color of marigold flower can be red, yellow and maroon.",
   "exits": { "northeast": 15 }
  }
-]

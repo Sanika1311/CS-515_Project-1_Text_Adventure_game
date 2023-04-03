@@ -69,6 +69,7 @@ class Game:
     
     def prompt(self):
         valid_commands = ["go", "look", "get", "inventory", "quit", "drop"]
+        valid_directions = ["north","northeast","east","southeast","south","southwest","west","northwest"]
         game_play = True
         while game_play:
             try:
@@ -77,10 +78,13 @@ class Game:
                 matches = [cmd for cmd in valid_commands if cmd.startswith(half_verb[0])]
                 if len(matches) == 1:
                     verb = matches
+                elif len(matches) == 0:
+                    print(f"Invalid Verb")
+                    continue
         
-                
                 if verb[0] == "go":
                     if len(half_verb) == 2 :
+
                         self.go(half_verb[1])
                     else:
                         print("Sorry, you need to 'go' somewhere.")
@@ -126,13 +130,17 @@ class Game:
     
     def go(self, direction):
         room = self.rooms[self.player_location]
-        
-        if direction not in room.exits:
-            print(f"There's no way to go {direction}.")
-        else:
+        direction = [cmd for cmd in room.exits.keys() if cmd.startswith(direction)]
+
+        if len(direction) == 1:
             print(f"You go {direction}.\n")
             self.player_location = room.exits[direction]
             self.look()
+        elif len(direction) > 1:
+            print(f"Did you want to go {' or '.join(direction)}?")
+        else:
+            print(f"There's no way to go {direction}.")
+       
 
     def look(self):
         room = self.rooms[self.player_location]
@@ -144,12 +152,19 @@ class Game:
     
     def get(self, noun):
         room = self.rooms[self.player_location]
-        if noun not in room.items:
-            print(f"There's no {noun} anywhere.")
+        items = [cmd for cmd in room.items if cmd.startswith(noun)]
+
+        if len(items) == 1:
+            self.inventory.append(items[0])
+            print(f"You pick up the {items[0]}.")
+            room.items.remove(items[0])
+        elif len(items) == 2:
+            print(f"Did you want to get the {' or '.join(items)}?")
+        elif len(items) > 2:
+            print(f"Did you want to get the {' , '.join(items[:(len(items)-1)])} or {items[len(items)-1]}?")
         else:
-            self.inventory.append(noun)
-            print(f"You pick up the {noun}.")
-            room.items.remove(noun)
+            print(f"There's no {noun} anywhere.")
+       
     
     def drop(self, noun):
         room = self.rooms[self.player_location]
