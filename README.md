@@ -23,7 +23,7 @@ Additional 3 extensions implemented:
 The drop method lets you drop the item from the inventory in the current room. If the item is not avaialable in the inventory then it will print that there is no such item in the inventory.
 2) Abbreviation :
 If we want to access the inventory, we dont have to type the whole word. We can just type 'in' or 'inv' and the inventory will be displayed.
-Such abbreviation can be use for look get and go. We cannot use 'g' command as there are 2 words of starting with 'g'
+Such abbreviation can be use for look get and go. We cannot use 'g' command as there are 2 words of starting with 'g'. I compared the input with valid commands. I checked if the strings are there in the list valid_commands using string startswith() method. If it is present then the particular verb method is executed.
 3)Direction become verbs :
-If we type 's' instead of go 'south' the prgram will understand that the player wants to go south. If the player has no exits in theparticular direction then it will print "There is no way to go ..."
+If we type 's' instead of go 'south' the prgram will understand that the player wants to go south. If the player has no exits in the particular direction then it will print "There is no way to go ..." I checked if the input such as 's' is there in the valid directions. If it is present then i used the verb go and then go method is executed.
 
