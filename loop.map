@@ -1,8 +1,8 @@
 [
  {"name": "Daisy room", 
   "desc": "The room is filled with white daisies.",
-  "exits": { "south": 4, "east": 1, "southeast" : 5},
-  "items": ["cater","caterpillar","catering"]
+  "exits": { "south": 4, "east": 1},
+  "items": ["car","caterpillar"]
  }
 ,
  {"name": "Rose room", 
