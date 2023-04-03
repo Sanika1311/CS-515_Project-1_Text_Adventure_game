@@ -11,86 +11,86 @@
  }
 ,
  {"name": "Tulip room", 
-  "desc": "You are in a simple room, with bright green walls.",
+  "desc": "tTulip flowers are usually cup-shaped with three petals and three sepals.",
   "exits": {"south": 6, "southast" : 7, "northwest" : 5},
   "items": []
  }
 ,
  {"name": "Orchid room",
-  "desc": "This room is fancy. It's red!",
+  "desc": "Orchids come in hues of red, pink, white, blue, green, purple, orange, and yellow.",
   "exits": { "south": 7 },
   "items": ["soil"]
  },
  {"name": "Carnation room", 
- "desc": "You are in a simple room with yellow walls.",
+ "desc": "White carnations suggest good luck and light red symbolizes admiration, .",
   "exits": { "north": 0, "east": 5, "south": 9 }
  }
 ,
  {"name": "Hyacinth room", 
- "desc": "This room is simple, too, but with purple walls.",
+ "desc": "This room is simple, filled with pernnial hyacinth flowers.",
   "exits": { "west": 4, "north": 1, "east" : 6}
  }
 ,
  {"name": "Daffodil room", 
- "desc": "You are in a simple room, with bright pink walls.",
+ "desc": "The daffodil flower is showy yellow or white, with six petals and a trumpet-shape central corona.",
  "exits": { "west": 5, "southeast": 11, "southwest": 10},
  "items": ["banana", "bandana", "bellows", "deck of cards"]
  }
  ,
  {"name": "Sunflower room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Sunflowers are well-known for being a happy flower.",
   "exits": { "east": 8, "northwest": 2, "north": 3 }
  }
  ,
  {"name": "Poppy room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "The poppy remains a humble, poignant symbol of Remembrance and hope.",
   "exits": { "west": 7, "southwest": 12 },
   "items": ["Berries"]
  }
  ,
  {"name": "Freesia room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Freesias are among the world’s most popular cut flowers. They are loved for their pure colors, long vase life and sweet perfume.",
   "exits": { "north": 4, "southeast": 13 },
   "items": []
  }
  ,
  {"name": "Jasmine room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "The room smells like jasmine.",
   "exits": { "northeast": 6, "southeast": 14 },
   "items": ["green apple", "green grapes"]
  }
  ,
  {"name": "Lavender room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Lavender is purple flower with soothing fragrance.",
   "exits": { "east": 12, "south": 15, "northwest": 6 }
  }
  ,
  {"name": "Lilac room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "The flowers, which are pale lilac to deep pink, appear in spring.",
   "exits": { "west": 11, "northeast": 8 },
   "items": ["cats", "rats"]
  }
  ,
  {"name": "Camelia room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Camellia colors include pink, white, dark pink and red.",
   "exits": { "northwest": 9, "east": 14 },
   "items": []
  }
  ,
  {"name": "Iris room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Purple iris brings a message of wisdom and compliments, while a bouquet of blue iris blossoms speak of hope and faith.",
   "exits": { "east": 15, "northwest": 10, "west": 13 }
 
  }
  ,
  {"name": "Fuchsia room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Purplish-red fuchsia represents a sense of liveliness, self-assurance, and confidence.",
   "exits": { "west": 14, "southwest": 16, "north": 11 },
   "items": ["sword", "apples"]
  }
  ,
  {"name": "Marigold room", 
-  "desc": "You are in a simple room, with bright pink walls.",
+  "desc": "Color of marigold flower can be red, yellow and maroon.",
   "exits": { "northeast": 15 }
  }
 ]
